@@ -61,9 +61,7 @@ class MainActivity : AppCompatActivity() {
         avg < median
     }
 
-
-
-
+    /*
     // Create a view from an item in a collection, but recycle if possible (similar to an AdapterView's adapter)
     private fun getView(position: Int, recycledView: View?, collection: List<Int>, context: Context): View {
         val textView: TextView
@@ -80,5 +78,16 @@ class MainActivity : AppCompatActivity() {
 
         return textView
     }
+    */
+    private fun getView(position: Int, recycledView: View?, collection: List<Int>, context: Context) =
+        (recycledView as TextView?)?.apply {
+            text = collection[position].toString()
+        } ?: run {
+            TextView(context).apply {
+                setPadding(5, 10, 10, 0)
+                textSize = 22f
+                text = collection[position].toString()
+            }
+        }
 
 }
